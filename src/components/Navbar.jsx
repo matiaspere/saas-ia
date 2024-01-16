@@ -1,27 +1,13 @@
 import React from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
+import Logout from "./Logout";
 import { buttonVariants } from "./ui/button";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-const navigationStandar = [
-  { title: "Precios", url: "/prices" },
-  { title: "Iniciar sesión", url: "/auth/login" },
-  { title: "Crear cuenta", url: "/auth/signup" },
-];
-
-const navigationUserLogin = [
-  {
-    title: "Cerrar sesión",
-    url: "/api/auth/logout",
-  },
-  { title: "Dashboard", url: "/dashboard" },
-];
-
 async function Navbar() {
   const session = await getServerSession(authOptions);
-  console.log(session);
 
   return (
     <nav className="sticky h-14 insert-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
@@ -69,15 +55,7 @@ async function Navbar() {
               >
                 Dashboard
               </Link>
-              <Link
-                href="/api/auth/signout"
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "sm",
-                })}
-              >
-                Cerrar sesión
-              </Link>
+              <Logout />
             </div>
           )}
         </div>

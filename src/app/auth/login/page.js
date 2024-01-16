@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import { buttonVariants } from "../../../components/ui/button";
 import { useForm } from "react-hook-form";
@@ -38,10 +38,15 @@ const Login = () => {
     } else {
       setFormSubmitted(false);
       toast({
-        title: "Erorr al iniciar sesión",
+        title: "Email o contraseñas incorrectos",
+        variant: "destructive"
       });
     }
   });
+useEffect(()=>{
+  router.refresh()
+},[])
+
 
   return (
     <div className="max-w-md mx-auto mt-8 bg-white p-8  border-gray-300 rounded-md">

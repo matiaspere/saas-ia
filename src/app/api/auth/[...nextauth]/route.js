@@ -19,7 +19,7 @@ export const authOptions = {
           placeholder: "********",
         },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const userFound = await prisma.user.findUnique({
           where: {
             email: credentials.email,
@@ -47,10 +47,29 @@ export const authOptions = {
       },
     }),
   ],
+  // callbacks: {
+  //   async jwt({ token, user }) {
+  //     if (user) {
+  //       (token.name = user.name),
+  //         (token.email = user.email),
+  //         (token.id = user.id);
+  //     }
+  //     console.log("el token es:", token);
+  //     return token;
+  //   },
+  //   async session({ session, token }) {
+  //     if (token) {
+  //       (session.user.name = token.name),
+  //         (session.user.email = token.email),
+  //         (session.user.id = token.id);
+  //     }
+  //     console.log("la sesion es:", session);
+  //     return session;
+  //   },
+  // },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/auth/login",
-    signOut: "/auth/login",
   },
 };
 

@@ -1,8 +1,11 @@
+"use client";
 import React from "react";
-import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  const { data: session } = useSession();
+
+  return <div>{session?.user?.email}</div>;
 };
 
 export default Dashboard;
