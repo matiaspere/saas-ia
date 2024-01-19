@@ -51,6 +51,7 @@ async function Navbar() {
                 href="/dashboard"
                 className={buttonVariants({
                   size: "sm",
+                  variant: "ghost",
                 })}
               >
                 Dashboard

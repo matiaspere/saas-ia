@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Provider from "./context/Provider";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default async function RootLayout({ children, session }) {
           )}
         >
           <Navbar />
+          {/* <Sidebar children={children} /> */}
           {children}
           <Toaster />
         </body>

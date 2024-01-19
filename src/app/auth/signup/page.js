@@ -4,6 +4,7 @@ import { buttonVariants } from "../../../components/ui/button";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import Link from "next/link";
 
 const Signup = () => {
   const {
@@ -54,6 +55,7 @@ const Signup = () => {
       setFormSubmitted(false);
       toast({
         title: "Erorr al crear cuenta",
+        variant: "destructive",
       });
     }
   });
@@ -70,6 +72,7 @@ const Signup = () => {
             Nombre
           </label>
           <input
+            placeholder="Juan Perez"
             type="text"
             id="name"
             name="name"
@@ -92,6 +95,7 @@ const Signup = () => {
             Email
           </label>
           <input
+            placeholder="juan@gmail.com"
             type="email"
             id="email"
             name="email"
@@ -114,6 +118,7 @@ const Signup = () => {
             Contraseña
           </label>
           <input
+            placeholder="********"
             type="password"
             id="password"
             name="password"
@@ -140,6 +145,7 @@ const Signup = () => {
             Repetir Contraseña
           </label>
           <input
+            placeholder="********"
             type="password"
             id="confirmPassword"
             name="confirmPassword"
@@ -168,6 +174,15 @@ const Signup = () => {
         >
           Crear Cuenta
         </button>
+
+        <div className=" mt-4 border-t-2">
+          <div className="mt-2 flex justify-between">
+            <p>¿Ya tienes una cuenta?</p>
+            <Link href="/auth/login" className="text-blue-600 font-semibold">
+              Inicia sesión
+            </Link>
+          </div>
+        </div>
       </form>
     </div>
   );

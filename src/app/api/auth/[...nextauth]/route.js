@@ -26,6 +26,7 @@ export const authOptions = {
           },
         });
 
+        console.log(userFound);
         if (!userFound) {
           return null;
         }
@@ -40,7 +41,7 @@ export const authOptions = {
         }
 
         return {
-          id: userFound.id,
+          id: userFound._id,
           name: userFound.name,
           email: userFound.email,
         };

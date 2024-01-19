@@ -18,4 +18,20 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  roles String @default("usuario")
+
+  orders Order[]
+}
+
+model Order {
+  id       Int    @id @default(autoincrement())
+  type     String 
+  coin     String
+  quantity Float
+  price    Float
+  amount   Float
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 }

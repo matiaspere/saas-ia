@@ -5,6 +5,7 @@ import { buttonVariants } from "../../../components/ui/button";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import Link from "next/link";
 
 const Login = () => {
   const {
@@ -39,14 +40,13 @@ const Login = () => {
       setFormSubmitted(false);
       toast({
         title: "Email o contraseñas incorrectos",
-        variant: "destructive"
+        variant: "destructive",
       });
     }
   });
-useEffect(()=>{
-  router.refresh()
-},[])
-
+  useEffect(() => {
+    router.refresh();
+  }, []);
 
   return (
     <div className="max-w-md mx-auto mt-8 bg-white p-8  border-gray-300 rounded-md">
@@ -108,6 +108,14 @@ useEffect(()=>{
         >
           Iniciar Sesión
         </button>
+        <div className=" mt-4 border-t-2">
+          <div className="mt-2 flex justify-between">
+          <p>¿No tienes una cuenta?</p>
+          <Link href="/auth/signup" className="text-blue-600 font-semibold">
+            Crear cuenta
+          </Link>
+          </div>
+        </div>
       </form>
     </div>
   );
